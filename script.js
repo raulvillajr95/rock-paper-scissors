@@ -15,27 +15,48 @@ function computerPlay() {
 
 }
 
-function oneRoundRPS(playerSelection, computerSelection) {
-  let playersChoice = playerSelection.toLowerCase()
-  let computersChoice = computerSelection
+function oneRoundRPS() {
+  let playersChoice = prompt('Rock, paper, or scissors').toLowerCase()
+  let computersChoice = computerPlay()
 
   if (playersChoice == computersChoice) {
     return `You tied! ${playersChoice} equals ${computersChoice}`
   } else {
     if (playersChoice == 'rock' && computersChoice == 'paper') {
+      computerCnt += 1
       return `You Lose! ${computersChoice} beats ${playersChoice}`
     } else if (playersChoice == 'rock' && computersChoice == 'scissors') {
+      playerCnt += 1
       return `You Win! ${playersChoice} beats ${computersChoice}`
     } else if (playersChoice == 'paper' && computersChoice == 'rock') {
-      return `You Win! ${playersChoice} equals ${computersChoice}`
+      playerCnt += 1
+      return `You Win! ${playersChoice} beats ${computersChoice}`
     } else if (playersChoice == 'paper' && computersChoice == 'scissors') {
+      computerCnt += 1
       return `You Lose! ${computersChoice} beats ${playersChoice}`
     } else if (playersChoice == 'scissors' && computersChoice == 'rock') {
+      computerCnt += 1
       return `You Lose! ${computersChoice} beats ${playersChoice}`
     } else if (playersChoice == 'scissors' && computerSelection == 'paper') {
+      playerCnt += 1
       return `You Win! ${playersChoice} beats ${computersChoice}`
     }
   }
 }
 
-console.log(oneRoundRPS('RocK', computerPlay()))
+let playerCnt = 0;
+let computerCnt = 0;
+function game() {
+  for (let i = 1; i < 6; i++) {
+    console.log(oneRoundRPS())
+  }
+  if (playerCnt > computerCnt) {
+    return `You Win! ${playerCnt} to ${computerCnt}`
+  } else if (computerCnt > playerCnt) {
+    return `You Lose! ${playerCnt} to ${computerCnt}`
+  } else {
+    return `You Tied! ${playerCnt} to ${computerCnt}`
+  }
+}
+
+console.log(game())
