@@ -19,7 +19,23 @@ function oneRoundRPS(playerSelection, computerSelection) {
   let playersChoice = playerSelection.toLowerCase()
   let computersChoice = computerSelection
 
-  return `${playersChoice}, ${computersChoice}`
+  if (playersChoice == computersChoice) {
+    return `You tied! ${playersChoice} equals ${computersChoice}`
+  } else {
+    if (playersChoice == 'rock' && computersChoice == 'paper') {
+      return `You Lose! ${computersChoice} beats ${playersChoice}`
+    } else if (playersChoice == 'rock' && computersChoice == 'scissors') {
+      return `You Win! ${playersChoice} beats ${computersChoice}`
+    } else if (playersChoice == 'paper' && computersChoice == 'rock') {
+      return `You Win! ${playersChoice} equals ${computersChoice}`
+    } else if (playersChoice == 'paper' && computersChoice == 'scissors') {
+      return `You Lose! ${computersChoice} beats ${playersChoice}`
+    } else if (playersChoice == 'scissors' && computersChoice == 'rock') {
+      return `You Lose! ${computersChoice} beats ${playersChoice}`
+    } else if (playersChoice == 'scissors' && computerSelection == 'paper') {
+      return `You Win! ${playersChoice} beats ${computersChoice}`
+    }
+  }
 }
 
 console.log(oneRoundRPS('RocK', computerPlay()))
