@@ -15,8 +15,8 @@ function computerPlay() {
 
 }
 
-function oneRoundRPS() {
-  let playersChoice = prompt('Rock, paper, or scissors').toLowerCase()
+function oneRoundRPS(choice) {
+  let playersChoice = choice
   let computersChoice = computerPlay()
 
   if (playersChoice == computersChoice) {
@@ -46,9 +46,9 @@ function oneRoundRPS() {
 
 let playerCnt = 0;
 let computerCnt = 0;
-function game() {
-  for (let i = 1; i < 6; i--) {
-    console.log(oneRoundRPS())
+function game(choice) {
+  for (let i = 1; i < 6; i++) {
+    console.log(oneRoundRPS(choice))
   }
   if (playerCnt > computerCnt) {
     return `You Win! ${playerCnt} to ${computerCnt}`
@@ -59,4 +59,21 @@ function game() {
   }
 }
 
-console.log(game())
+//console.log(game())
+
+let rock = document.querySelector('.rock')
+let paper = document.querySelector('.paper')
+let scissors = document.querySelector('.scissors')
+
+rock.addEventListener('click', function() {
+  console.log(oneRoundRPS('rock'))
+  //game()
+})
+paper.addEventListener('click', function() {
+  console.log(oneRoundRPS('paper'))
+  //game()
+})
+scissors.addEventListener('click', function() {
+  console.log(oneRoundRPS('scissors'))
+  //game()
+})
