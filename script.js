@@ -47,7 +47,7 @@ function oneRoundRPS() {
 let playerCnt = 0;
 let computerCnt = 0;
 function game() {
-  for (let i = 1; i < 6; i++) {
+  for (let i = 1; i < 6; i--) {
     console.log(oneRoundRPS())
   }
   if (playerCnt > computerCnt) {
