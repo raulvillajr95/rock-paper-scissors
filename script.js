@@ -46,24 +46,31 @@ function oneRoundRPS(choice) {
 
 let playerCnt = 0;
 let computerCnt = 0;
-function game(choice) {
-  for (let i = 1; i < 6; i++) {
-    console.log(oneRoundRPS(choice))
-  }
-  if (playerCnt > computerCnt) {
+function game() {
+  // for (let i = 1; i < 6; i++) {
+  //   console.log(oneRoundRPS(choice))
+  // }
+  if (playerCnt == 5 && playerCnt > computerCnt) {
     return `You Win! ${playerCnt} to ${computerCnt}`
-  } else if (computerCnt > playerCnt) {
+  } else if (computerCnt == 5 && computerCnt > playerCnt) {
     return `You Lose! ${playerCnt} to ${computerCnt}`
   } else {
-    return `You Tied! ${playerCnt} to ${computerCnt}`
+    return ''
   }
 }
-
 //console.log(game())
+
+function firstToFive() {
+  
+}
 
 let rock = document.querySelector('.rock')
 let paper = document.querySelector('.paper')
 let scissors = document.querySelector('.scissors')
+
+let computer = document.querySelector('.computer')
+let player = document.querySelector('.player')
+let endgame = document.querySelector('.endgame')
 
 let div = document.querySelector('.results')
 
@@ -72,19 +79,28 @@ rock.addEventListener('click', function() {
   para.textContent = oneRoundRPS('rock')
   div.appendChild(para)
 
-  //game()
+  computer.textContent = `PC: ${computerCnt}`
+  player.textContent = `Player: ${playerCnt}`
+
+  endgame.textContent = game()
 })
 paper.addEventListener('click', function() {
   let para = document.createElement('p')
   para.textContent = oneRoundRPS('paper')
   div.appendChild(para)
 
-  //game()
+  computer.textContent = `PC: ${computerCnt}`
+  player.textContent = `Player: ${playerCnt}`
+  
+  endgame.textContent = game()
 })
 scissors.addEventListener('click', function() {
   let para = document.createElement('p')
   para.textContent = oneRoundRPS('scissors')
   div.appendChild(para)
+
+  computer.textContent = `PC: ${computerCnt}`
+  player.textContent = `Player: ${playerCnt}`
   
-  //game()
+  endgame.textContent = game()
 })
