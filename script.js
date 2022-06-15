@@ -46,22 +46,21 @@ function oneRoundRPS(choice) {
 
 let playerCnt = 0;
 let computerCnt = 0;
-function game() {
-  // for (let i = 1; i < 6; i++) {
-  //   console.log(oneRoundRPS(choice))
-  // }
-  if (playerCnt == 5 && playerCnt > computerCnt) {
-    return `You Win! ${playerCnt} to ${computerCnt}`
-  } else if (computerCnt == 5 && computerCnt > playerCnt) {
-    return `You Lose! ${playerCnt} to ${computerCnt}`
-  } else {
-    return ''
-  }
-}
-//console.log(game())
 
-function firstToFive() {
-  
+let canYouPlay = true;
+function game() {
+  // if (playerCnt > 5 || computerCnt > 5 || (playerCnt == 5 && computerCnt == 5)) {
+  //   return ''
+  // }
+  if (playerCnt == 5 || computerCnt == 5) {
+    if (playerCnt == 5 && playerCnt > computerCnt) {
+      canYouPlay = false;
+      return `You Win! ${playerCnt} to ${computerCnt}`
+    } else if (computerCnt == 5 && computerCnt > playerCnt) {
+      canYouPlay = false;
+      return `You Lose! ${playerCnt} to ${computerCnt}`
+    }
+  }
 }
 
 let rock = document.querySelector('.rock')
@@ -75,32 +74,32 @@ let endgame = document.querySelector('.endgame')
 let div = document.querySelector('.results')
 
 rock.addEventListener('click', function() {
-  let para = document.createElement('p')
-  para.textContent = oneRoundRPS('rock')
-  div.appendChild(para)
+  if (canYouPlay) {
+    div.textContent = `Gameplay: ${oneRoundRPS('rock')}`
 
-  computer.textContent = `PC: ${computerCnt}`
-  player.textContent = `Player: ${playerCnt}`
+    computer.textContent = `PC: ${computerCnt}`
+    player.textContent = `Player: ${playerCnt}`
 
-  endgame.textContent = game()
+    endgame.textContent = game()
+  }
 })
 paper.addEventListener('click', function() {
-  let para = document.createElement('p')
-  para.textContent = oneRoundRPS('paper')
-  div.appendChild(para)
+  if (canYouPlay) {
+    div.textContent = `Gameplay: ${oneRoundRPS('paper')}`
 
-  computer.textContent = `PC: ${computerCnt}`
-  player.textContent = `Player: ${playerCnt}`
-  
-  endgame.textContent = game()
+    computer.textContent = `PC: ${computerCnt}`
+    player.textContent = `Player: ${playerCnt}`
+    
+    endgame.textContent = game()
+  }
 })
 scissors.addEventListener('click', function() {
-  let para = document.createElement('p')
-  para.textContent = oneRoundRPS('scissors')
-  div.appendChild(para)
+  if (canYouPlay) {
+    div.textContent = `Gameplay: ${oneRoundRPS('scissors')}`
 
-  computer.textContent = `PC: ${computerCnt}`
-  player.textContent = `Player: ${playerCnt}`
-  
-  endgame.textContent = game()
+    computer.textContent = `PC: ${computerCnt}`
+    player.textContent = `Player: ${playerCnt}`
+    
+    endgame.textContent = game()
+  }
 })
