@@ -37,7 +37,7 @@ function oneRoundRPS(choice) {
     } else if (playersChoice == 'scissors' && computersChoice == 'rock') {
       computerCnt += 1
       return `You Lose! ${computersChoice} beats ${playersChoice}`
-    } else if (playersChoice == 'scissors' && computerSelection == 'paper') {
+    } else if (playersChoice == 'scissors' && computersChoice == 'paper') {
       playerCnt += 1
       return `You Win! ${playersChoice} beats ${computersChoice}`
     }
@@ -65,15 +65,26 @@ let rock = document.querySelector('.rock')
 let paper = document.querySelector('.paper')
 let scissors = document.querySelector('.scissors')
 
+let div = document.querySelector('.results')
+
 rock.addEventListener('click', function() {
-  console.log(oneRoundRPS('rock'))
+  let para = document.createElement('p')
+  para.textContent = oneRoundRPS('rock')
+  div.appendChild(para)
+
   //game()
 })
 paper.addEventListener('click', function() {
-  console.log(oneRoundRPS('paper'))
+  let para = document.createElement('p')
+  para.textContent = oneRoundRPS('paper')
+  div.appendChild(para)
+
   //game()
 })
 scissors.addEventListener('click', function() {
-  console.log(oneRoundRPS('scissors'))
+  let para = document.createElement('p')
+  para.textContent = oneRoundRPS('scissors')
+  div.appendChild(para)
+  
   //game()
 })
